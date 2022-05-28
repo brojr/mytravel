@@ -3,13 +3,19 @@ import { useState } from "react"
 const Info = () => {
     const [over, setOver] = useState(false)
     return (
-        <div 
+        <div
             onMouseOver={() => setOver(true)}
             onMouseLeave={() => setOver(false)}
-            >
+        >
             <span>더보기</span>
             {over &&
-                <div style={{position:'absolute',width:200,right:-40}}>
+                <div style={{
+                    position: 'absolute',
+                    width: 200, right: -10,
+                    marginRight: 10,
+                    backgroundColor: 'white',
+                    borderStyle: 'solid'
+                }}>
                     <ul>
                         <li>공지사항</li>
                         <li>이벤트</li>
