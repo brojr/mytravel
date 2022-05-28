@@ -11,6 +11,11 @@ const Searching = () => {
     }
     const onSearch =(event) =>{
         event.preventDefault();
+        if (text.trim()===''){
+            window.alert('검색어를 입력해주세요')
+            setText('')
+            return
+        }
         navigate('/near',{state:text})
         setSearching(false)        
     }
