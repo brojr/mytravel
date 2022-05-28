@@ -1,6 +1,12 @@
-const Login = () =>{
-    return(
-        <div>Login page</div>
+const Login = ({ isLogin }) => {
+    return (
+        <div>
+            {isLogin ?
+                <div>profile</div>:
+                <div>Login page</div> 
+            }
+
+        </div>
     )
 }
 

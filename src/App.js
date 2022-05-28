@@ -1,11 +1,12 @@
 import AppRouter from "components/AppRouter";
-import { HashRouter, Routes, Route } from "react-router-dom";
-import Home from "routers/Home";
+import { useState } from "react";
 
 function App() {
+  const [isLogin,setIsLogin] = useState(false)
+  //로그인 처리시 -> setIsLogin=>true
   return (
     <div className="App">
-      <AppRouter/>
+      <AppRouter isLogin={isLogin}/>
     </div>
   );
 }
