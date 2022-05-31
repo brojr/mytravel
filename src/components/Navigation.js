@@ -4,7 +4,7 @@ import Searching from "./Searching";
 
 const Navigation = () => {
     return (
-        <div style={{ display: 'flex' ,justifyContent:'space-between', marginBottom:50}}>
+        <header style={{ display: 'flex' ,justifyContent:'space-between', marginBottom:50}}>
             <a href="/">홈</a>
             <div style={{ display: 'flex' }}>
                 <Searching />
@@ -13,7 +13,7 @@ const Navigation = () => {
                 <Info />
                 <Link to="/login">로그인</Link>
             </div>
-        </div>)
+        </header>)
 }
 
 export default Navigation;
