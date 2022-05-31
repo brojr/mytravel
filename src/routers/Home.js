@@ -9,18 +9,21 @@ const Home = () => {
     return (
         <div>
             <img src={imgURL} alt="메인화면 이미지" style={{ width: '100%' }} />
-            <div onClick={onClick} style={{
-                width: '50%',
+            <div style={{
+                width: '100%',
                 display: 'flex',
                 justifyContent: 'space-between',
                 cursor: 'pointer'
             }}>
-                <span>서울경기</span>
-                <span>제주</span>
-                <span>강원</span>
-                <span>충청</span>
-                <span>전라남북</span>
-                <span>경상남북</span>
+                <span onClick={onClick}>서울</span>
+                <span onClick={onClick}>부산</span>
+                <span onClick={onClick}>제주</span>
+                <span onClick={onClick}>대구</span>
+                <span onClick={onClick}>광주</span>
+                <span onClick={onClick}>전주</span>
+                <span onClick={onClick}>대전</span>
+                <span onClick={onClick}>춘천</span>
+                <span onClick={onClick}>인천</span>
             </div>
         </div>
     )
