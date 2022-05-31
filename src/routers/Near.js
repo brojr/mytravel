@@ -35,7 +35,7 @@ const Near = () => {
             bounds.extend(point)
             kakao.maps.event.addListener(marker, 'click', () => {
                 // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-                infowindow.setContent(`<div style=padding:5px;font-size:12px;>${place.place_name}</div>`);
+                infowindow.setContent(`<a href=${place.place_url}>${place.place_name}</div>`);
                 infowindow.open(map, marker);
             });
 
