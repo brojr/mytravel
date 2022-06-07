@@ -1,6 +1,18 @@
 const express = require('express')
 const path = require('path')
 const app = express();
+const mongoose = require('mongoose');
+
+const uri = 'mongodb://localhost:27017/my_db'
+const db = mongoose.connect(uri,(err)=>{
+    if(err){
+        console.log(err.message)
+    }
+    else{
+        console.log('Connected')
+    }
+})
+console.log(mongoose)
 
 app.use(express.static(path.join(__dirname,'..','client/build')))
 app.get('/',(req,res)=>{
