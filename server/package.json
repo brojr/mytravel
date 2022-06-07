@@ -2,11 +2,9 @@
   "name": "mytravel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "sever.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd client && npm start",
-    "server": "cd server && nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,9 +18,8 @@
   },
   "homepage": "https://github.com/sm970309/mytravel#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "mongoose": "^6.3.5"
+    "mongoose": "^6.3.5",
+    "nodemon": "^2.0.16"
   }
 }
