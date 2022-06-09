@@ -1,14 +1,14 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = ({ isLogin }) => {
-    const [id, setId] = useState('');
+    const [userid, setUserId] = useState('');
     const [pw, setPw] = useState('');
     let navigate = useNavigate();
     const onChange = (event) => {
         const { name } = event.target
         if (name === "id") {
-            setId(event.target.value)
+            setUserId(event.target.value)
         }
         else {
             setPw(event.target.value)
@@ -19,7 +19,7 @@ const Login = ({ isLogin }) => {
         event.preventDefault();
         // POST형식으로 데이터 서버에 전달
         const res = await axios.post('http://localhost:8080/login', {
-            id: id,
+            userid: userid,
             pw: pw
         })
         if (res.data==='fail'){
@@ -39,7 +39,7 @@ const Login = ({ isLogin }) => {
                 <form onSubmit={onSubmit}>
                     <input
                         name='id'
-                        value={id}
+                        value={userid}
                         type="text"
                         placeholder="ID"
                         onChange={onChange} />
@@ -49,6 +49,7 @@ const Login = ({ isLogin }) => {
                         type="password"
                         placeholder="PW"
                         onChange={onChange} />
+                    <Link to='/register'>회원가입</Link>
                     <input type="submit" value="로그인" />
                 </form>
             }

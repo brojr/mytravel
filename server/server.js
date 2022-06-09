@@ -19,11 +19,12 @@ const db = mongoose.connect(uri,(err)=>{
 })
 
 var UserSchem = mongoose.Schema({
-    id:String,
-    pw:String
+    username:{type:String,require:true},
+    userid:{type:String,require:true,unique:true},
+    pw:{type:String,require:true},
 })
 var User = mongoose.model('User',UserSchem);
-// console.log(mongoose)
+//////////////////////////////////////////////////////////////
 
 app.use(cors()) // 다른 포트와 통신하기 위해 필요
 app.use(bodyParser.json()) // POST형식에서 데이터를 받기위해 필요
@@ -35,11 +36,9 @@ app.get('/',(req,res)=>{
 });
 
 app.post('/login',(req,res)=>{
-    const id = req.body.id;
-    const pw = req.body.pw;
-    var user = new User({id:id,pw:pw})
+    const {userid,pw} = req.body;
     User.findOne({
-        id:id,pw:pw
+        userid:userid,pw:pw
     }).exec((err,result)=>{
         if(err){
             res.send(err)
@@ -51,12 +50,22 @@ app.post('/login',(req,res)=>{
             res.send('fail')
         }
     })
-    // user.save((err,result)=>{
-    //     if(err){
-    //         console.log(err)
-    //     }
-    // })
     
+    
+})
+app.post('/register',(req,res)=>{
+    const {username,userid,pw} = req.body
+    var user = new User({username:username,userid:userid,pw:pw})
+    user.save((err,result)=>{
+        if (result){
+            res.send('success')
+        }
+        else if(err){
+            res.send('fail')
+            console.log(err.message)
+        }
+        
+    })
 })
 
 app.listen(PORT,() =>{
