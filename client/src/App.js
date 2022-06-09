@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function App() {
   const [isLogin,setIsLogin] = useState(false)
-  //로그인 처리시 -> setIsLogin=>true
+  //로그인 처리시 -> setIsLogin=>true (redux구현)
   return (
     <div className="App" style={{margin:20}}>
       <AppRouter isLogin={isLogin}/>

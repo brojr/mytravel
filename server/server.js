@@ -17,6 +17,12 @@ const db = mongoose.connect(uri,(err)=>{
         console.log('Connected')
     }
 })
+
+var UserSchem = mongoose.Schema({
+    id:String,
+    pw:String
+})
+var User = mongoose.model('User',UserSchem);
 // console.log(mongoose)
 
 app.use(cors()) // 다른 포트와 통신하기 위해 필요
@@ -28,9 +34,29 @@ app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'..','client/build/index.html'))
 });
 
-app.post('/register',(req,res)=>{
-    console.log(req.body)
-    res.send('This is 8080')
+app.post('/login',(req,res)=>{
+    const id = req.body.id;
+    const pw = req.body.pw;
+    var user = new User({id:id,pw:pw})
+    User.findOne({
+        id:id,pw:pw
+    }).exec((err,result)=>{
+        if(err){
+            res.send(err)
+        }
+        if(result){
+            res.send('success')
+        }
+        else{
+            res.send('fail')
+        }
+    })
+    // user.save((err,result)=>{
+    //     if(err){
+    //         console.log(err)
+    //     }
+    // })
+    
 })
 
 app.listen(PORT,() =>{

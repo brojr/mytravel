@@ -8,7 +8,7 @@ import BookList from "routers/BookList"
 const AppRouter = ({isLogin}) => {
   return (
     <BrowserRouter>
-      <Navigation />
+      <Navigation isLogin={isLogin}/>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login isLogin={isLogin}/>} />
