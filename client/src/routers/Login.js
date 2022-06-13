@@ -25,8 +25,9 @@ const Login = ({ isLogin }) => {
         if (res.data==='fail'){
             window.alert('로그인 실패')
         }
-        else if (res.data==='success'){
+        else {
             window.alert('로그인 성공')
+            console.log(res)
             // 넘어온 데이터를 global storage에 저장 후 홈으로
             navigate('/')
         }

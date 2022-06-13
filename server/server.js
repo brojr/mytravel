@@ -4,27 +4,8 @@ const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const {User} = require('./user')
 
-// DB부분
-const mongoose = require('mongoose');
-
-const uri = 'mongodb://localhost:27017/my_db'
-const db = mongoose.connect(uri,(err)=>{
-    if(err){
-        console.log(err.message)
-    }
-    else{
-        console.log('Connected')
-    }
-})
-
-var UserSchem = mongoose.Schema({
-    username:{type:String,require:true},
-    userid:{type:String,require:true,unique:true},
-    pw:{type:String,require:true},
-})
-var User = mongoose.model('User',UserSchem);
-//////////////////////////////////////////////////////////////
 
 app.use(cors()) // 다른 포트와 통신하기 위해 필요
 app.use(bodyParser.json()) // POST형식에서 데이터를 받기위해 필요
@@ -44,7 +25,7 @@ app.post('/login',(req,res)=>{
             res.send(err)
         }
         if(result){
-            res.send('success')
+            res.send(result)
         }
         else{
             res.send('fail')
