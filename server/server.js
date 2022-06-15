@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const {User} = require('./user')
 const bcrypt = require('bcrypt')
-
+const jwt = require('jsonwebtoken')
 
 app.use(cors()) // 다른 포트와 통신하기 위해 필요
 app.use(bodyParser.json()) // POST형식에서 데이터를 받기위해 필요
@@ -29,7 +29,8 @@ app.post('/login',(req,res)=>{
                 if(err) res.send(err)
                 if(!same) res.send({message:'wrongpw'})
                 else{
-                    res.send({...result,message:'success'})
+                    const token = jwt.sign({_id:userid.toString()},"SECRET",{expiresIn:'15m'})
+                    res.send({message:'success',token})
 
                 }
             })

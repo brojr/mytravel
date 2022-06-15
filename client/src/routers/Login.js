@@ -33,7 +33,7 @@ const Login = ({ isLogin }) => {
             else if(message==='wrongpw'){
                 window.alert('비밀번호가 일치하지 않습니다.')
             }
-            else{
+            else if(message==='success'){
                 window.alert('로그인 성공')
                 // 넘어온 데이터를 global storage에 저장 후 홈으로
                 navigate('/')
