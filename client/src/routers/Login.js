@@ -22,14 +22,22 @@ const Login = ({ isLogin }) => {
             userid: userid,
             pw: pw
         })
-        if (res.data==='fail'){
-            window.alert('로그인 실패')
+        console.log(res)
+        if (res.status!==200){
+            window.alert(res)
         }
         else {
-            window.alert('로그인 성공')
-            console.log(res)
-            // 넘어온 데이터를 global storage에 저장 후 홈으로
-            navigate('/')
+            const {message} = res.data
+            if(message==='noid')
+                window.alert('아이디가 존재하지 않습니다.')
+            else if(message==='wrongpw'){
+                window.alert('비밀번호가 일치하지 않습니다.')
+            }
+            else{
+                window.alert('로그인 성공')
+                // 넘어온 데이터를 global storage에 저장 후 홈으로
+                navigate('/')
+            }
         }
     }
 
