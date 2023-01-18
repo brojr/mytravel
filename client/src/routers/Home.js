@@ -23,7 +23,7 @@ const Home = () => {
                 <span onClick={onClick}>전주</span>
                 <span onClick={onClick}>대전</span>
                 <span onClick={onClick}>춘천</span>
-                <span onClick={onClick}>인천</span>
+                <span onClick={onClick}>구월동</span>
             </div>
         </div>
     )
